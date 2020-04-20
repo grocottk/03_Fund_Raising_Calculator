@@ -1,5 +1,5 @@
 
-# Component 1
+# Fund Raising Calculator Component 1
 # Adds given Items and costs into multiple mini lists, which are then entered into a larger list
 
 # Lists:
