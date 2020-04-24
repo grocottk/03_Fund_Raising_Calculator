@@ -24,3 +24,9 @@ def number_checker(question):
 
         except ValueError:
             print(error)
+
+# Main Routine:
+
+units = number_checker("What is your desired number of units? ")
+
+print("You are making {:.0f} units of your product".format(units))
