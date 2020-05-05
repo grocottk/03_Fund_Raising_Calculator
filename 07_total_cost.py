@@ -146,7 +146,7 @@ for item in fixed_costs:
 print("The subtotal of the fixed costs is ${:.2f}".format(fixed_subtotal))
 print()
 
-# Total Calculations ______________________________________________________________________________________________________
+# Total Calculations __________________________________________________________________________________________________
 
 total = calculated_variable_subtotal + fixed_subtotal
 
