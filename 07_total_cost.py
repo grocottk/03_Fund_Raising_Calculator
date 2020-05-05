@@ -55,7 +55,6 @@ variable_costs = []
 units_required = number_checker("What is your desired number of units? ")
 
 print("Please enter the variable costs associated with your product below:")
-print()
 
 # Get inputs and add to the mini list
 
@@ -76,7 +75,7 @@ while variable_item.lower() != "xxx":
     # Ask the user for the cost of the item
     # (Eventually, replace this with a number checking function)
 
-    variable_cost = float(input("What is the fixed cost in NZD? "))
+    variable_cost = float(input("What is the variable cost in NZD? "))
 
     # Add both the item name and cost to the mini list
 
@@ -100,11 +99,11 @@ calculated_variable_subtotal = variable_subtotal * units_required
 # Prints the Subtotal
 
 print("The subtotal of the variable costs is ${:.2f}".format(calculated_variable_subtotal))
+print()
 
 # Fixed Costs _________________________________________________________________________________________________________
 
 print("Please enter the fixed costs associated with your product below:")
-print()
 
 # Get inputs and add to the mini list
 
@@ -145,9 +144,10 @@ for item in fixed_costs:
 # Prints the Subtotal
 
 print("The subtotal of the fixed costs is ${:.2f}".format(fixed_subtotal))
+print()
 
-# Total Calculations:
+# Total Calculations ______________________________________________________________________________________________________
 
 total = calculated_variable_subtotal + fixed_subtotal
 
-print(total)
+print("The total added cost of both subtotals is ${:.2f}".format(total))
