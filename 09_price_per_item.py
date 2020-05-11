@@ -34,7 +34,7 @@ def number_checker(question):
 
 units = number_checker("What is your desired number of units? ")
 
-revenue_required = number_checker("What is the total amount of revenue "
+revenue_required = number_checker("What is the total amount of revenue in NZD "
                                   "that you require to meet your desired profit? ")
 
 # Divides the revenue required by the number of units that will be sold
@@ -43,16 +43,18 @@ price_per_unit = float(revenue_required) / float(units)
 
 # Tells the user their calculated price per item
 
+print()
 print("Your calculated price per unit is:")
 print()
 print("${:.2f} per unit".format(price_per_unit))
 
 # Calculates practical price per unit: [Enter equation below]
 
-p_p_p_unit = 0
+practical_unit = (float(revenue_required) / float(units)) * 1.25
 
 # Tells the user their practical price per unit
 
+print()
 print("Your practical price per unit is:")
 print()
-print("${:.2f} per unit".format(p_p_p_unit))
+print("${:.2f} per unit".format(round(practical_unit, 0)))
