@@ -44,15 +44,15 @@ def number_checker(question):
 
 def get_costs(units_required, fixed):
 
-    # Defining list that holds all of the costs and names
+    # Defining Lists:
 
-    all_items = []
+    # Defining Costs List
 
-    # Defines cost
+    costs = []
 
-    costs = all_items
+    # Defining Variables:
 
-    # Defines subtotal
+    # Defining 'variable_subtotal' variable:
 
     subtotal = 0
 
@@ -62,20 +62,21 @@ def get_costs(units_required, fixed):
 
         units_required = 1
 
-    variable_item = ""
+    print("Please enter the variable costs associated with your product below:")
 
-    while variable_item.lower() != "xxx":
+    # Get inputs and add to the mini list
 
-        # Holds each 'row' of the price breakdown
+    item = ""
+
+    while item.lower() != "xxx":
 
         item_cost = []
 
-        variable_item = input("What is the name of the variable cost? ")
+        item = input("What is the name of the variable cost? ")
 
         # If the user enters the exit code, break the loop
 
-        if variable_item.lower() == "xxx":
-
+        if item.lower() == "xxx":
             break
 
         # Ask the user for the cost of the item
@@ -85,12 +86,12 @@ def get_costs(units_required, fixed):
 
         # Add both the item name and cost to the mini list
 
-        item_cost.append(variable_item)
+        item_cost.append(item)
         item_cost.append(variable_cost)
 
         # Add the mini lists to the master list
 
-    all_items.append(costs)
+        costs.append(item_cost)
 
     # Add the costs of the items from the list into a variable:
 
@@ -100,9 +101,21 @@ def get_costs(units_required, fixed):
 
     # Calculates Subtotal:
 
-    calculated_subtotal = subtotal * units_required
+    calculated_variable_subtotal = subtotal * units_required
 
     # Prints the Subtotal
 
-    print("The subtotal of the variable costs is ${:.2f}".format(calculated_subtotal))
+    print("The subtotal of the variable costs is ${:.2f}".format(calculated_variable_subtotal))
     print()
+
+# Main Routine:
+
+# Ask user for their required number of units and defines function as variable
+
+
+get_costs(number_checker("What is your desired number of units? "), "no")
+
+# Ask user for their required number of units and defines function as fixed
+
+
+get_costs(number_checker("What is your desired number of units? "), "yes")
