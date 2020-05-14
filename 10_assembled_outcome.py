@@ -5,7 +5,7 @@
 
 # Functions:
 
-# Statement Generator(Finds the length of a message, and prints characters above and below that equal the
+# Statement Generator (Finds the length of a message, and prints characters above and below that equal the
 # ...length of the message) [Taken from MQA_Post_Usability_Testing_1.0 Gist created on October 29 2019]:
 
 
@@ -57,7 +57,7 @@ def not_blank(question):
 
     # Defines error message
 
-    error = "Sorry, but you must enter a string as your project name. You cannot have numbers in your project name."
+    error = "Sorry, but you must enter a string as your name. You cannot have numbers in your name."
 
     # Beginning of loop
 

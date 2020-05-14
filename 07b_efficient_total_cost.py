@@ -39,10 +39,55 @@ def number_checker(question):
         except ValueError:
             print(error)
 
+# Blank Checking Function (Checks that the inputs given for a value do not have numbers in them and are not blank):
+
+
+def not_blank(question):
+
+    # Defines error message
+
+    error = "Sorry, but you must enter a string as your name. You cannot have numbers in your name."
+
+    # Beginning of loop
+
+    valid = False
+    while not valid:
+        response = input(question)
+        has_errors = ""
+
+        # Look at each character in string, if any characters are numbers, give an error
+
+        for letter in response:
+            if __name__ == '__main__':
+                if letter.isdigit():
+                    has_errors = "yes"
+                    break
+
+        # If the response to the question is blank, print an error message
+
+        if response == "":
+            print()
+            print("Sorry, but you must enter something as your project name. You cannot leave it blank.")
+            print()
+            continue
+
+        # If the response to the question has other errors, print the error message
+
+        elif has_errors != "":
+            print()
+            print(error)
+            print()
+            continue
+
+        # Otherwise, return the response
+
+        else:
+            return response
+
 # Subtotal Finding Function (uses units_required in order to swap between Fixed and Variable Costs)
 
 
-def get_costs(units_required, fixed):
+def get_subtotal(units_required, fixed):
 
     # Defining Lists:
 
@@ -52,17 +97,23 @@ def get_costs(units_required, fixed):
 
     # Defining Variables:
 
-    # Defining 'variable_subtotal' variable:
+    # Defining 'subtotal' variable:
 
     subtotal = 0
 
-    # If the require input is fixed costs, define units required as one
+    # If the required input is fixed costs, define units required as one
 
     if fixed == "yes":
 
         units_required = 1
 
-    print("Please enter the variable costs associated with your product below:")
+        print("Please enter the fixed costs associated with your product below:")
+
+    # Otherwise, ask fot the variable costs associated
+
+    else:
+
+        print("Please enter the variable costs associated with your product below:")
 
     # Get inputs and add to the mini list
 
@@ -72,7 +123,7 @@ def get_costs(units_required, fixed):
 
         item_cost = []
 
-        item = input("What is the name of the variable cost? ")
+        item = not_blank("What is the name of the cost? ")
 
         # If the user enters the exit code, break the loop
 
@@ -80,14 +131,13 @@ def get_costs(units_required, fixed):
             break
 
         # Ask the user for the cost of the item
-        # (Eventually, replace this with a number checking function)
 
-        variable_cost = float(input("What is the variable cost in NZD? "))
+        cost = number_checker("What is the cost in NZD? ")
 
         # Add both the item name and cost to the mini list
 
         item_cost.append(item)
-        item_cost.append(variable_cost)
+        item_cost.append(cost)
 
         # Add the mini lists to the master list
 
@@ -101,21 +151,31 @@ def get_costs(units_required, fixed):
 
     # Calculates Subtotal:
 
-    calculated_variable_subtotal = subtotal * units_required
+    calculated_subtotal = subtotal * units_required
 
     # Prints the Subtotal
 
-    print("The subtotal of the variable costs is ${:.2f}".format(calculated_variable_subtotal))
+    print("The subtotal of these costs is ${:.2f}".format(calculated_subtotal))
     print()
+
+    return calculated_subtotal
 
 # Main Routine:
 
 # Ask user for their required number of units and defines function as variable
 
 
-get_costs(number_checker("What is your desired number of units? "), "no")
+variable_subtotal = get_subtotal(number_checker("What is your desired number of units? "), "no")
 
-# Ask user for their required number of units and defines function as fixed
+# Defines the number of required units as one and the function as fixed
 
 
-get_costs(number_checker("What is your desired number of units? "), "yes")
+fixed_subtotal = get_subtotal(1, "yes")
+
+# Finds the total by using the two subtotals
+
+total = fixed_subtotal + variable_subtotal
+
+# Prints message telling the user the total of their two subtotals
+
+print("The total added cost of both subtotals is ${:.2f}".format(total))
