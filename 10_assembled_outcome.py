@@ -95,81 +95,97 @@ def not_blank(question):
         else:
             return response
 
-# Lists:
+# Subtotal Finding Function (uses units_required in order to swap between Fixed and Variable Costs)
 
 
-item_cost = []
-expenses = []
+def get_subtotal(units_required, fixed):
+
+    # Defining Lists:
+
+    # Defining Costs List
+
+    costs = []
+
+    # Defining Variables:
+
+    # Defining 'subtotal' variable:
+
+    subtotal = 0
+
+    # If the required input is fixed costs, define units required as one
+
+    if fixed == "yes":
+
+        units_required = 1
+
+        print("Please enter the fixed costs associated with your product below:")
+
+    # Otherwise, ask fot the variable costs associated
+
+    else:
+
+        print("Please enter the variable costs associated with your product below:")
+
+    # Get inputs and add to the mini list
+
+    item = ""
+
+    while item.lower() != "xxx":
+
+        item_cost = []
+
+        item = not_blank("What is the name of the cost? ")
+
+        # If the user enters the exit code, break the loop
+
+        if item.lower() == "xxx":
+            break
+
+        # Ask the user for the cost of the item
+
+        cost = number_checker("What is the cost in NZD? ")
+
+        # Add both the item name and cost to the mini list
+
+        item_cost.append(item)
+        item_cost.append(cost)
+
+        # Add the mini lists to the master list
+
+        costs.append(item_cost)
+
+    # Add the costs of the items from the list into a variable:
+
+    for item in costs:
+        subtotal += item[1]
+
+    # Calculates Subtotal:
+
+    calculated_subtotal = subtotal * units_required
+
+    # Prints the Subtotal
+
+    print("The subtotal of these costs is ${:.2f}".format(calculated_subtotal))
+    print()
+
+    return calculated_subtotal
 
 # Main Routine:
 
-
-# Asks user for their product name
-
-project_name = not_blank("What is the name of your project? ")
-
-# Asks user for their desired number of units
-
-units = number_checker("What is your desired number of units? ")
+# Ask user for their required number of units and defines function as variable
 
 
-# Asks user for the name and cost of their expenses
+variable_subtotal = get_subtotal(number_checker("What is your desired number of units? "), "no")
 
-# Get inputs and add to the mini list
-
-item = ""
-
-while item.lower() != "xxx":
-
-    item_cost = []
-
-    item = input("What is the name of the item? ")
-
-    # If the user enters the exit code, break the loop
-
-    if item.lower() == "xxx":
-
-        break
-
-    # Ask the user for the cost of the item
-    # (Eventually, replace this with a number checking function)
-
-    cost = float(input("How much does that item cost in NZD? "))
-
-    # Add both the item name and cost to the mini list
-
-    item_cost.append(item)
-    item_cost.append(cost)
-
-    # Add the mini lists to the master list
-
-    expenses.append(item_cost)
+# Defines the number of required units as one and the function as fixed
 
 
-# Sorts mini lists
+fixed_subtotal = get_subtotal(1, "yes")
 
-# To sort by cost:
+# Finds the total by using the two subtotals
 
-expenses.sort(key=lambda x: x[1], reverse=1)
+total = fixed_subtotal + variable_subtotal
 
-# Output:
+# Prints message telling the user the total of their two subtotals
 
-print()
-
-print("Items by cost (Highest to Lowest)")
-
-for item in expenses:
-
-    print("{}: ${:.2f}".format(item[0], item[1]))
-
-print()
-
-# To sort Alphabetically:
-
-expenses.sort(key=lambda x: x[0])
-
-print("Items in Alphabetical Order (A to Z)")
-
-for item in expenses:
-
-    print("{}: ${:.2f}".format(item[0], item[1]))
+print("The total added cost of both subtotals is ${:.2f}".format(total))
