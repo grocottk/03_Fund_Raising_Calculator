@@ -3,7 +3,7 @@
 # Assembles a collection of previously created Components in order to create a program that meets the specifications
 # ... of a Fund Raising Calculator
 
-# Functions:
+# *** Functions: ***
 
 # Statement Generator (Finds the length of a message, and prints characters above and below that equal the
 # ...length of the message) [Taken from MQA_Post_Usability_Testing_1.0 Gist created on October 29 2019]:
@@ -77,17 +77,13 @@ def not_blank(question):
         # If the response to the question is blank, print an error message
 
         if response == "":
-            print()
-            print("Sorry, but you must enter something as your project name. You cannot leave it blank.")
-            print()
+            print("Sorry, but you must enter something as your name. You cannot leave it blank.")
             continue
 
         # If the response to the question has other errors, print the error message
 
         elif has_errors != "":
-            print()
             print(error)
-            print()
             continue
 
         # Otherwise, return the response
@@ -200,7 +196,6 @@ def string_checker(question, to_check):
 
 # End of Ms. Gottschalk's String Checker (Licenced under the 'GNU GENERAL PUBLIC LICENSE')
 
-
 # *** Main Routine: ***
 
 # * Introduction: *
@@ -208,6 +203,10 @@ def string_checker(question, to_check):
 # Print title and introduction of Fund Raising Calculator
 
 statement_generator("Welcome to the Fund Raising Calculator", "*")
+
+# Asks the user the name of their project
+
+project_name = not_blank("What is the name of your project? ")
 
 # * Receiving Costs: *
 
@@ -291,3 +290,27 @@ practical_unit = (float(revenue_required) / float(units_required)) * 1.25
 print()
 print("Your practical price per unit is:")
 statement_generator("${:.2f} per unit".format(round(practical_unit, 0)), "-")
+
+# *** Project Summary: ***
+
+# Prints the project name
+
+statement_generator(project_name, "~")
+
+# Prints both subtotals
+
+print("The calculated subtotal of your variable costs is ${:.2f}".format(variable_subtotal))
+print("The subtotal of your fixed costs is ${:.2f}".format(fixed_subtotal))
+
+# Prints total project cost
+
+print("The total cost of your project is ${:.2f}".format(total))
+
+# Prints total revenue required
+
+print("The total revenue that your product requires is ${:.2f}".format(revenue_required))
+
+# Prints calculated and practical prices per unit
+
+print("The calculated proce per unit of your product is ${:.2f}, while your calculated price per unit is ${:.2f}"
+      .format(price_per_unit, practical_unit))
