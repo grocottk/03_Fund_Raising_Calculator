@@ -182,21 +182,26 @@ def string_checker(question, to_check):
 
         response = input(question).lower()
 
-        for item in to_check:
+        # If the given response is equal to the item, return the response
 
-            # If the given response is equal to the item, return the response
+        if response in to_check:
+            return response
 
-            if response == item:
-                return response
+        # If the response is equal to the first item in the list, return the item
 
-            # If the response is equal to the first item in the list, return the item
+        else:
 
-            elif response == item[0]:
-                return item
+            for item in to_check:
 
-        # Prints error message
+                if response == item[0]:
 
-        print("sorry that is not a valid response")
+                    return item
+
+                # Otherwise, print an error message
+
+                else:
+
+                    print("sorry that is not a valid response")
 
 # End of Ms. Gottschalk's String Checker (Licenced under the 'GNU GENERAL PUBLIC LICENSE')
 
@@ -290,4 +295,5 @@ practical_unit = (float(revenue_required) / float(units_required)) * 1.25
 
 print()
 print("Your practical price per unit is:")
-statement_generator("${:.2f} per unit".format(round(practical_unit, 0)), "-")
+print()
+print("${:.2f} per unit".format(round(practical_unit, 0)))
