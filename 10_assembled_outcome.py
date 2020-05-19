@@ -98,7 +98,7 @@ def not_blank(question):
 # Subtotal Finding Function (uses units_required in order to swap between Fixed and Variable Costs)
 
 
-def get_subtotal(units_required, fixed):
+def get_subtotal(units_needed):
 
     # Defining Lists:
 
@@ -112,11 +112,9 @@ def get_subtotal(units_required, fixed):
 
     subtotal = 0
 
-    # If the required input is fixed costs, define units required as one
+    # If the units are equal to one, ask for the fixed costs associated with the product
 
-    if fixed == "yes":
-
-        units_required = 1
+    if units_needed == 1:
 
         print("Please enter the fixed costs associated with your product below:")
 
@@ -128,27 +126,27 @@ def get_subtotal(units_required, fixed):
 
     # Get inputs and add to the mini list
 
-    item = ""
+    individual_item = ""
 
-    while item.lower() != "xxx":
+    while individual_item.lower() != "xxx":
 
         item_cost = []
 
-        item = not_blank("What is the name of the cost? ")
+        individual_item = not_blank("What is the name of the cost? ")
 
         # If the user enters the exit code, break the loop
 
-        if item.lower() == "xxx":
+        if individual_item.lower() == "xxx":
             break
 
         # Ask the user for the cost of the item
 
-        cost = number_checker("What is the cost in NZD? ")
+        individual_cost = number_checker("What is the cost in NZD? ")
 
         # Add both the item name and cost to the mini list
 
-        item_cost.append(item)
-        item_cost.append(cost)
+        item_cost.append(individual_item)
+        item_cost.append(individual_cost)
 
         # Add the mini lists to the master list
 
@@ -161,7 +159,7 @@ def get_subtotal(units_required, fixed):
 
     # Calculates Subtotal:
 
-    calculated_subtotal = subtotal * units_required
+    calculated_subtotal = subtotal * units_needed
 
     # Prints the Subtotal
 
@@ -170,17 +168,62 @@ def get_subtotal(units_required, fixed):
 
     return calculated_subtotal
 
-# Main Routine:
-
-# Ask user for their required number of units and defines function as variable
+# Ms. Gottschalk's String Checker (Licenced under the 'GNU GENERAL PUBLIC LICENSE') [Updated for use in this program]
 
 
-variable_subtotal = get_subtotal(number_checker("What is your desired number of units? "), "no")
+def string_checker(question, to_check):
 
-# Defines the number of required units as one and the function as fixed
+    # Loop while the string is not valid
+
+    valid = False
+    while not valid:
+
+        # Defines response as the question, converted into all lower case
+
+        response = input(question).lower()
+
+        for item in to_check:
+
+            # If the given response is equal to the item, return the response
+
+            if response == item:
+                return response
+
+            # If the response is equal to the first item in the list, return the item
+
+            elif response == item[0]:
+                return item
+
+        # Prints error message
+
+        print("sorry that is not a valid response")
+
+# End of Ms. Gottschalk's String Checker (Licenced under the 'GNU GENERAL PUBLIC LICENSE')
 
 
-fixed_subtotal = get_subtotal(1, "yes")
+# *** Main Routine: ***
+
+# * Introduction: *
+
+# Print title and introduction of Fund Raising Calculator
+
+statement_generator("Welcome to the Fund Raising Calculator", "*")
+
+# * Receiving Costs: *
+
+# Defines 'units_required' as the desired number of units
+
+units_required = number_checker("What is your desired number of units? ")
+
+# Enters 'units_required' variable into the 'get_subtotal' function
+
+variable_subtotal = get_subtotal(units_required)
+
+# Defines the number of required units as one
+
+fixed_subtotal = get_subtotal(1)
+
+# * Total Cost: *
 
 # Finds the total by using the two subtotals
 
@@ -189,3 +232,63 @@ total = fixed_subtotal + variable_subtotal
 # Prints message telling the user the total of their two subtotals
 
 print("The total added cost of both subtotals is ${:.2f}".format(total))
+
+# * Finding desired Profit: *
+
+# Defines 'amount_percentage' list
+
+amount_percentage = ["amount", "percentage"]
+
+# Asks the user whether they would like to enter their desired profit as an amount or a percentage
+# ... (using the string checker)
+
+profit_unit = string_checker("Would you like to enter your desired profit as "
+                             "an amount or a percentage? ", amount_percentage)
+
+# Checks to see which unit was chosen, then asks questions accordingly:
+
+# If the profit is as a percentage:
+
+if profit_unit == "percentage":
+
+    percentage = number_checker("What percentage of profit would you like to make? ")
+
+    # Multiplying Profit by the total, then adding to the total again (Credit to scanftree.com)
+
+    revenue_required = float((percentage / 100) * total) + float(total)
+
+# If the profit is as an amount:
+
+elif profit_unit == "amount":
+
+    amount = number_checker("What amount of profit in NZD would you like to make? ")
+
+    # Add profit to total (Credit to scanftree.com)
+
+    revenue_required = float(amount) + float(total)
+
+print("The amount of revenue that you require to reach your profit goal is ${:.2f}".format(revenue_required))
+
+# * Price Per Item: *
+
+# Divides the revenue required by the number of units that will be sold
+
+price_per_unit = float(revenue_required) / float(units_required)
+
+# Tells the user their calculated price per item
+
+print()
+print("Your calculated price per unit is:")
+print()
+print("${:.2f} per unit".format(price_per_unit))
+
+# Calculates practical price per unit: [Enter equation below]
+
+practical_unit = (float(revenue_required) / float(units_required)) * 1.25
+
+# Tells the user their practical price per unit
+
+print()
+print("Your practical price per unit is:")
+print()
+print("${:.2f} per unit".format(round(practical_unit, 0)))
