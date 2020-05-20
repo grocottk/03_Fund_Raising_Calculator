@@ -196,6 +196,22 @@ def string_checker(question, to_check):
 
 # End of Ms. Gottschalk's String Checker (Licenced under the 'GNU GENERAL PUBLIC LICENSE')
 
+# Instruction Printing Function (Prints the Instructions to the program)
+
+
+def instructions():
+
+    print("Welcome to the Fund Raising Calculator. "
+          "The aim of this program is to intake raw costs from a fund raising entity, "
+          "and perform a series of equations in order to output various statistics, "
+          "including a recommended, practical, price per unit.")
+    print()
+    print("To begin the program, please enter the name of your chosen project, "
+          " followed by the number of units that are available for sale.")
+    print()
+    print("Disclaimer: This program is intended for hypothetical use, therefore, "
+          "costs are required to be entered by the user")
+
 # *** Main Routine: ***
 
 # * Introduction: *
@@ -203,6 +219,7 @@ def string_checker(question, to_check):
 # Print title and introduction of Fund Raising Calculator
 
 statement_generator("Welcome to the Fund Raising Calculator", "*")
+
 
 # Asks the user the name of their project
 
@@ -277,9 +294,7 @@ price_per_unit = float(revenue_required) / float(units_required)
 # Tells the user their calculated price per item
 
 print()
-print("Your calculated price per unit is:")
-print()
-print("${:.2f} per unit".format(price_per_unit))
+print("Your calculated price per unit is ${:.2f} per unit".format(price_per_unit))
 
 # Calculates practical price per unit: [Enter equation below]
 
@@ -287,9 +302,7 @@ practical_unit = (float(revenue_required) / float(units_required)) * 1.25
 
 # Tells the user their practical price per unit
 
-print()
-print("Your practical price per unit is:")
-statement_generator("${:.2f} per unit".format(round(practical_unit, 0)), "-")
+print("Your practical price per unit is ${:.2f} per unit".format(round(practical_unit, 0)))
 
 # *** Project Summary: ***
 
@@ -299,18 +312,18 @@ statement_generator(project_name, "~")
 
 # Prints both subtotals
 
-print("The calculated subtotal of your variable costs is ${:.2f}".format(variable_subtotal))
-print("The subtotal of your fixed costs is ${:.2f}".format(fixed_subtotal))
+print("Calculated Variable Costs Subtotal: ${:.2f}".format(variable_subtotal))
+print("Fixed Costs Subtotal: ${:.2f}".format(fixed_subtotal))
 
 # Prints total project cost
 
-print("The total cost of your project is ${:.2f}".format(total))
+print("Total Costs: ${:.2f}".format(total))
 
 # Prints total revenue required
 
-print("The total revenue that your product requires is ${:.2f}".format(revenue_required))
+print("Total Revenue: ${:.2f}".format(revenue_required))
 
 # Prints calculated and practical prices per unit
 
-print("The calculated proce per unit of your product is ${:.2f}, while your calculated price per unit is ${:.2f}"
-      .format(price_per_unit, practical_unit))
+print("Calculated Price Per Unit: ${:.2f}".format(price_per_unit))
+print("Practical Price Per Unit ${:.2f}".format(practical_unit))
