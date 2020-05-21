@@ -206,11 +206,18 @@ def instructions():
           "and perform a series of equations in order to output various statistics, "
           "including a recommended, practical, price per unit.")
     print()
+    print("In this program, you will be asked to input a selection of costs, "
+          "both variable and fixed, after which, a subtotal will be printed in both cases. "
+          "Following this, you will be required to enter the amount of profit that you desire to make, "
+          "as either a percentage or an amount. After this, a selection of prices will be printed, "
+          "concluding the program")
+    print()
     print("To begin the program, please enter the name of your chosen project, "
           " followed by the number of units that are available for sale.")
     print()
     print("Disclaimer: This program is intended for hypothetical use, therefore, "
-          "costs are required to be entered by the user")
+          "costs are required to be created and entered by the user")
+    print()
 
 # *** Main Routine: ***
 
@@ -218,8 +225,12 @@ def instructions():
 
 # Print title and introduction of Fund Raising Calculator
 
+
 statement_generator("Welcome to the Fund Raising Calculator", "*")
 
+# Prints the instructions to the program
+
+instructions()
 
 # Asks the user the name of their project
 
@@ -229,7 +240,7 @@ project_name = not_blank("What is the name of your project? ")
 
 # Defines 'units_required' as the desired number of units
 
-units_required = number_checker("What is your desired number of units? ")
+units_required = number_checker("What is the number of units that you intend to sell? ")
 
 # Enters 'units_required' variable into the 'get_subtotal' function
 
