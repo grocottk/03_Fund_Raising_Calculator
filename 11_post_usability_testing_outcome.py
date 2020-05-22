@@ -1,7 +1,7 @@
 
-# Fund Raising Calculator Assembled Outcome
-# Assembles a collection of previously created Components in order to create a program that meets the specifications
-# ... of a Fund Raising Calculator
+# Fund Raising Calculator Post Usability Testing Outcome
+# This is the outcome of the Fund Raising Calculator after Usability Testing, where the main feedback related to
+# ... the usability was in regards to a lack of instructions. This is the final build og my Fund Raising Calculator.
 
 # *** Functions: ***
 
@@ -197,28 +197,29 @@ def string_checker(question, to_check):
 # End of Ms. Gottschalk's String Checker (Licenced under the 'GNU GENERAL PUBLIC LICENSE')
 
 # Instruction Printing Function (Prints the Instructions to the program)
+# Formatting Credit to The Python Cheat Sheet and Noobmaster69
 
 
 def instructions():
 
-    print("Welcome to the Fund Raising Calculator. "
-          ""
-          "The aim of this program is to intake raw costs from a fund raising entity, "
-          "and perform a series of equations in order to output various statistics, "
-          "including a recommended, practical, price per unit.")
-    print()
-    print("In this program, you will be asked to input a selection of costs, "
-          "both variable and fixed, after which, a subtotal will be printed in both cases. "
-          "Following this, you will be required to enter the amount of profit that you desire to make, "
-          "as either a percentage or an amount. After this, a selection of prices will be printed, "
-          "concluding the program.")
-    print()
-    print("To begin the program, please enter the name of your chosen project, "
-          " followed by the number of units that are available for sale.")
-    print()
-    print("Disclaimer: This program is intended for hypothetical use, therefore, "
-          "costs are required to be created and entered by the user.")
-    print()
+    print('''Welcome to the Fund Raising Calculator.
+
+The aim of this program is to intake raw costs from a fund raising entity,
+and perform a series of equations in order to output various statistics,
+including a recommended, practical, price per unit.
+
+In this program, you will be asked to input a selection of costs,
+both variable and fixed, after which, a subtotal will be printed in both cases.
+Following this, you will be required to enter the amount of profit that you desire to make,
+as either a percentage or an amount. After this, a selection of prices will be printed,
+concluding the program.
+
+To begin the program, please enter the name of your chosen project,
+followed by the number of units that are available for sale.
+
+Disclaimer: This program is intended for hypothetical use, therefore,
+costs are required to be created and entered by the user.
+''')
 
 # *** Main Routine: ***
 
