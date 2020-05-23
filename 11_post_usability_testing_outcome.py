@@ -197,19 +197,19 @@ def string_checker(question, to_check):
 # End of Ms. Gottschalk's String Checker (Licenced under the 'GNU GENERAL PUBLIC LICENSE')
 
 # Instruction Printing Function (Prints the Instructions to the program)
-# Formatting Credit to The Python Cheat Sheet and Noobmaster69
+# Formatting Credit to 'The Python Cheat Sheet' and 'Noobmaster69'
 
 
 def instructions():
 
-    print('''Welcome to the Fund Raising Calculator.
-
-The aim of this program is to intake raw costs from a fund raising entity,
+    print('''The aim of this program is to intake raw costs from a fund raising entity,
 and perform a series of equations in order to output various statistics,
 including a recommended, practical, price per unit.
 
 In this program, you will be asked to input a selection of costs,
-both variable and fixed, after which, a subtotal will be printed in both cases.
+both variable and fixed (entering 'xxx' once all applicable costs have been entered),
+after which, a subtotal will be printed in both cases.
+
 Following this, you will be required to enter the amount of profit that you desire to make,
 as either a percentage or an amount. After this, a selection of prices will be printed,
 concluding the program.
