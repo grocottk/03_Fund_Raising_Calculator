@@ -128,7 +128,7 @@ def get_subtotal(units_needed):
 
         item_cost = []
 
-        individual_item = not_blank("What is the name of the cost? ")
+        individual_item = not_blank("What is the name of the individual item? ")
 
         # If the user enters the exit code, break the loop
 
@@ -137,7 +137,7 @@ def get_subtotal(units_needed):
 
         # Ask the user for the cost of the item
 
-        individual_cost = number_checker("What is the cost in NZD? ")
+        individual_cost = number_checker("What is the cost of the individual item in NZD? ")
 
         # Add both the item name and cost to the mini list
 
