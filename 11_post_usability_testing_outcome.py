@@ -341,4 +341,4 @@ print("Total Revenue: ${:.2f}".format(revenue_required))
 # Prints calculated and practical prices per unit
 
 print("Calculated Price Per Unit: ${:.2f}".format(price_per_unit))
-print("Practical Price Per Unit ${:.2f}".format(practical_unit))
+print("Practical Price Per Unit ${:.2f}".format(round(practical_unit, 0)))
